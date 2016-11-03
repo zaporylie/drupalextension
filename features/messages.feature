@@ -19,7 +19,7 @@ Feature: Ensure that messages are working properly on local installs
     Then I should see the error message "Unrecognized username or password"
 
   Scenario: Non-JS messages for authenticated
-    Given I am logged in as a user with the "access site in maintenance mode|administer site configuration" permissions
+    Given I am logged in as a user with the "access site in maintenance mode,administer site configuration" permissions
     And I am on "admin/config/development/maintenance"
     When I check the box "maintenance_mode"
     And I press "Save configuration"
@@ -27,7 +27,7 @@ Feature: Ensure that messages are working properly on local installs
 
   @javascript
   Scenario: JS messages for authenticated
-    Given I am logged in as a user with the "access site in maintenance mode|administer site configuration" permissions
+    Given I am logged in as a user with the "access site in maintenance mode,administer site configuration" permissions
     And I am on "admin/config/development/maintenance"
     When I check the box "maintenance_mode"
     And I press "Save configuration"
