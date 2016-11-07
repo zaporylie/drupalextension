@@ -23,7 +23,7 @@ Feature: Ensure that messages are working properly on local installs
     And I am on "admin/config/development/maintenance"
     When I check the box "maintenance_mode"
     And I press "Save configuration"
-    Then I should see the success message "The configuration options have been saved."
+    Then I should see the message "The configuration options have been saved."
 
   @javascript
   Scenario: JS messages for authenticated
@@ -31,4 +31,4 @@ Feature: Ensure that messages are working properly on local installs
     And I am on "admin/config/development/maintenance"
     When I check the box "maintenance_mode"
     And I press "Save configuration"
-    Then I should see the success message "The configuration options have been saved."
+    Then I should see the message "The configuration options have been saved."
