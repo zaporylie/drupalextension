@@ -224,6 +224,32 @@ class FeatureContext extends RawDrupalContext {
     }
 
     /**
+     * Prepares Big Pipe NOJS cookie if needed.
+     *
+     * @BeforeScenario
+     */
+    public function prepareBigPipeNoJsCookie()
+    {
+        try {
+            // Check if JavaScript can be executed by Driver.
+            $this->getSession()->getDriver()->executeScript('true');
+        }
+        catch (\Behat\Mink\Exception\UnsupportedDriverActionException $e) {
+            // Check if Big Pipe is available.
+            if (class_exists('\Drupal\big_pipe\Render\Placeholder\BigPipeStrategy')) {
+                // Set NOJS cookie.
+                $this
+                  ->getSession()
+                  ->setCookie(\Drupal\big_pipe\Render\Placeholder\BigPipeStrategy::NOJS_COOKIE, true);
+            }
+
+        }
+        catch (Exception $e) {
+            // Mute exceptions.
+        }
+    }
+
+    /**
      * Prepares test folders in the temporary directory.
      *
      * @BeforeScenario
